@@ -51,8 +51,12 @@ class RoomsController < ApplicationController
     @rooms = current_user.rooms
   end
   def index
-    @q = Room.ransack(params[:q])
+@q = Room.ransack(params[:q])
+if params[:q].present?
+
 @rooms = @q.result
+render 'prou'
+end
   end
 
   private
